@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+
+h1 {
+  @apply text-4xl;
+}
+
+@import "tailwindcss/utilities";
+
+
