@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  landing_pages:
+    show:
+      title: "Landing Page"

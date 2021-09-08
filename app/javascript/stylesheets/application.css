@@ -3,9 +3,10 @@
 
 
 h1 {
-  @apply text-4xl;
+  @apply text-4xl uppercase;
 }
 
+@import "./components/main_navigation_component.css";
 @import "tailwindcss/utilities";
 
 
