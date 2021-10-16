@@ -1,0 +1,25 @@
+%div{ 'data-controller': 'devise--memorize-email' }
+  = render Devise::FormComponent.new do |c|
+    = c.title do
+      = t('shared.devise.sign_in')
+
+    = c.form do
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        %div
+          .field.my-6
+            = render Forms::FieldComponent.new(form: f, field: :email) do |c|
+              = f.email_field :email, autocomplete: "email", class: c.default_classes, 'data-devise--memorize-email-target': 'email', 'data-action': 'devise--memorize-email#memorize'
+
+          .field.my-6
+            = render Forms::FieldComponent.new(form: f, field: :password) do |c|
+              = f.password_field :password, autocomplete: "current-password", class: c.default_classes
+
+          - if devise_mapping.rememberable?
+            .field.my-6
+              = render Forms::CheckBoxComponent.new(form: f, field: :remember_me)
+
+          .actions.mt-10.mb-4
+            = render Forms::SubmitComponent.new do |c|
+              = f.submit t('shared.devise.sign_in'), class: c.default_classes
+
+    - c.links links

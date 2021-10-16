@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Deal
+    %title DEAL
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,7 +10,9 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .header
-      = render MainNavigationComponent.new
+      = render Layout::MainNavigationComponent.new
     .main
-      = yield
+      = render Layout::FlashesComponent.new(action_dispatch_flash: flash)
+      .container.mx-auto.py-10
+        = yield
     .footer

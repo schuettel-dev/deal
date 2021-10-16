@@ -1,0 +1,14 @@
+@keyframes fade-animation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.password-with-hint:focus-within .hint {
+  animation-name: fade-animation;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+input[type=submit]:disabled {
+  @apply bg-gray-100 border-gray-100 text-gray-400;
+}

@@ -1,0 +1,22 @@
+.bg-gray-800.py-8
+  .mx-auto.container
+    .flex.items-start
+      .flex-grow
+        = link_to root_path do
+          .inline-flex.w-20.h-20.bg-gradient-to-br.from-pink-400.to-blue-500.rounded-full.p-5.items-center.border-4.border-white.justify-center.font-bold.text-white.text-3xl.leading-5
+            DE AL
+
+      .flex-shrink-0
+        %div{ 'data-controller': 'main-navigation-component--main-navigation-component' }
+          %nav
+            %ul
+              %li
+              - if user_signed_in?
+                %li
+                  = link_to t('shared.devise.sign_out'), destroy_user_session_path, method: :delete, class: 'text-gray-200 hover:text-blue-300 transition'
+              - else
+                %li
+                  = link_to new_user_session_path, class: 'py-1 pl-5 pr-3 text-xs rounded-md border-2 border-gray-100 text-gray-100 hover:opacity-100 transition tracking-wide opacity-50 flex items-center gap-x-1' do
+                    = t('shared.devise.sign_in')
+                    %svg.h-3.w-3{fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M9 5l7 7-7 7", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2.5"}

@@ -1,0 +1,6 @@
+DEFAULTS: &DEFAULTS
+  encrypted_password: "$2a$12$h07rBzRMAGP7VZZrBXXS.e3ThCkgvuckObRgjNlwpI7q3HYA8UzO6" # "1234567890"
+
+michael:
+  <<: *DEFAULTS
+  email: "michael@dundermifflin.test"

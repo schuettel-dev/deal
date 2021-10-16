@@ -1,0 +1,26 @@
+%div{ 'data-controller': 'devise--new-registration-form devise--memorize-email', 'data-devise--new-registration-form-minimum-password-length-value': minimum_password_length }
+  = render Devise::FormComponent.new do |c|
+    = c.title do
+      = t('shared.devise.create_account')
+
+    = c.form do
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { autocomplete: 'off' }) do |f|
+        %div
+          .field.my-6
+            = render Forms::FieldComponent.new(form: f, field: :email) do |c|
+              = f.email_field :email, autocomplete: "off", class: c.default_classes, 'data-devise--new-registration-form-target': 'email', 'data-devise--memorize-email-target': 'email', 'data-action': 'devise--new-registration-form#render devise--memorize-email#memorize', 'data-lpignore': true
+
+          .password-with-hint.my-6
+            .field
+              = render Forms::FieldComponent.new(form: f, field: :password) do |c|
+                = f.password_field :password, autocomplete: "off", class: c.default_classes, 'data-action': 'devise--new-registration-form#render', 'data-devise--new-registration-form-target': 'password', 'data-lpignore': true
+
+            .field.mt-2
+              .hint.text-xs.text-gray-400.opacity-0
+                = t('shared.devise.minimum_password_length', count: minimum_password_length)
+
+          .actions.mt-10.mb-4
+            = render Forms::SubmitComponent.new do |c|
+              = f.submit t("shared.devise.create_account"), class: c.default_classes, 'data-devise--new-registration-form-target': 'submit'
+
+      - c.links links

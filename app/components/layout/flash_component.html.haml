@@ -1,0 +1,7 @@
+= render Helpers::DismissableComponent.new do |c|
+  .notice.py-4.px-2.text-sm{ class: flash_classes }
+    .container.mx-auto.flex.items-baseline
+      .flex-grow= message
+      .flex-shrink-0.pl-1
+        = c.dismiss_button(classes: button_classes) do
+          = t('shared.actions.dismiss')

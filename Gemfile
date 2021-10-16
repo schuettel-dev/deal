@@ -23,6 +23,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
 end
 
 group :development do

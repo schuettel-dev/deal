@@ -1,0 +1,3 @@
+.notifications
+  - notification_keys.each do |notification_key|
+    = flash(flash: action_dispatch_flash, key: notification_key)

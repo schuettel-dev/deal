@@ -1,12 +1,24 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-
-h1 {
-  @apply text-4xl uppercase;
+.heading-1 {
+  @apply text-2xl tracking-wide text-gray-700;
 }
 
-@import "./components/main_navigation_component.css";
+body {
+  @apply h-full bg-gray-100;
+}
+
+label {
+  @apply text-xs text-gray-800 tracking-wide;
+}
+
+input {
+  @apply rounded;
+}
+
+@import "./components/devise/new_registration_component.css";
 @import "tailwindcss/utilities";
+
 
 
