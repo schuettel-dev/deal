@@ -7,7 +7,7 @@ en:
     actions:
       dismiss: Dismiss
     devise:
-      change_password: Change my password
+      change_password: Change password
       create_account: Create account
       forgot_password: Forgot password
       minimum_password_length: The minimum password length is %{count} characters.

@@ -10,7 +10,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .header
-      = render Layout::MainNavigationComponent.new
+      = render Layout::MainNavigationComponent.new(user_signed_in: user_signed_in?)
     .main
       = render Layout::FlashesComponent.new(action_dispatch_flash: flash)
       .container.mx-auto.py-10

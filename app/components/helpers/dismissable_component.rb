@@ -10,7 +10,7 @@ class Helpers::DismissableComponent < ViewComponent::Base
     end
 
     def call
-      tag.button(content, { class: classes, 'data-action': 'helpers--dismissable#dismiss' })
+      tag.button(content.chomp, class: classes, 'data-action': 'helpers--dismissable#dismiss')
     end
   end
 end

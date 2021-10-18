@@ -19,7 +19,6 @@
               = render Forms::CheckBoxComponent.new(form: f, field: :remember_me)
 
           .actions.mt-10.mb-4
-            = render Forms::SubmitComponent.new do |c|
-              = f.submit t('shared.devise.sign_in'), class: c.default_classes
+            = render Forms::SubmitComponent.new(form: f, text: t('shared.devise.sign_in'))
 
     - c.links links

@@ -16,7 +16,7 @@ class Layout::FlashComponent < ViewComponent::Base
   end
 
   def flash_classes
-    "#{key} #{flash_theme}"
+    "flash-#{key} #{flash_theme}"
   end
 
   def button_classes

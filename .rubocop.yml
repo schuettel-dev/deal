@@ -206,6 +206,7 @@ Minitest/LiteralAsActualArgument:
 
 Minitest/MultipleAssertions:
   Enabled: true
+  Max: 200
 
 Minitest/RefuteInDelta:
   Enabled: true

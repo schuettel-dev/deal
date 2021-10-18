@@ -1,11 +1,13 @@
 require 'test_helper'
 
 class Layout::MainNavigationComponentTest < ViewComponent::TestCase
-  test 'render' do
-    raise 'todo'
-    # assert_equal(
-    #   %(<span>Hello, components!</span>),
-    #   render_inline(Component.new(message: "Hello, components!")).css("span").to_html
-    # )
+  test 'render, user not signed in' do
+    render_inline(create_component(user_signed_in: false))
+    assert_link 'Sign in'
+  end
+
+  test 'render, user signed in' do
+    render_inline(create_component(user_signed_in: true))
+    assert_link 'Sign out'
   end
 end

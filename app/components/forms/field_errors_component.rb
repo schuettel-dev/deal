@@ -1,7 +1,7 @@
 class Forms::FieldErrorsComponent < ViewComponent::Base
-  def initialize(form:, field:)
+  def initialize(object:, field:)
     super()
-    @form = form
+    @object = object
     @field = field
   end
 
@@ -16,6 +16,6 @@ class Forms::FieldErrorsComponent < ViewComponent::Base
   private
 
   def errors
-    @form.object.errors
+    @object.errors
   end
 end

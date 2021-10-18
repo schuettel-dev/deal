@@ -24,6 +24,12 @@ class Layout::FlashesComponent < ViewComponent::Base
   end
 
   def render?
-    !action_dispatch_flash.empty?
+    any_known_keys_in_flash?
+  end
+
+  private
+
+  def any_known_keys_in_flash?
+    action_dispatch_flash.keys.map(&:to_sym).intersection(notification_keys).any?
   end
 end

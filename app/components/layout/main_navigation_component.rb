@@ -1,3 +1,10 @@
 class Layout::MainNavigationComponent < ViewComponent::Base
-  include Devise::Controllers::Helpers
+  def initialize(user_signed_in: false)
+    super()
+    @user_signed_in = user_signed_in
+  end
+
+  def user_signed_in?
+    @user_signed_in
+  end
 end

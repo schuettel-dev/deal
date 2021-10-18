@@ -20,7 +20,6 @@
                 = t('shared.devise.minimum_password_length', count: minimum_password_length)
 
           .actions.mt-10.mb-4
-            = render Forms::SubmitComponent.new do |c|
-              = f.submit t("shared.devise.create_account"), class: c.default_classes, 'data-devise--new-registration-form-target': 'submit'
+            = render Forms::SubmitComponent.new(form: f, text: t("shared.devise.create_account"), 'data-devise--new-registration-form-target': 'submit')
 
       - c.links links
