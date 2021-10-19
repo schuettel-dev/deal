@@ -2,14 +2,76 @@ require 'application_system_test_case'
 
 class Devise::RegistrationsTest < ApplicationSystemTestCase
   test 'user registers' do
-    raise 'todo'
+    visit '/'
+    assert_no_link 'Sign out'
+    navigate_to_registration_form
+
+    assert_selector 'h1', text: 'Create account'
+
+    fill_in 'Email', with: 'dwight@dundermifflin.test'
+    fill_in 'Password', with: 'dwight@dundermifflin.test'
+
+    click_on 'Create account'
+
+    assert_selector 'h1', text: 'Landing Page'
+    assert_link 'Sign out'
+    assert_no_link 'Sign in'
   end
 
   test 'user enters invalid email and password' do
-    raise 'todo'
+    visit '/'
+    navigate_to_registration_form
+
+    fill_in 'Email', with: ''
+    fill_in 'Password', with: 'too-short'
+
+    click_on 'Create account'
+
+    assert_selector '.form--field-errors', text: "Email can't be blank"
+    assert_selector '.form--field-errors', text: 'Password is too short (minimum is 10 characters)'
   end
 
   test 'user registers with browser' do
-    raise 'todo'
+    using_browser do
+      visit '/'
+      navigate_to_registration_form
+
+      find_button 'Create account', disabled: true
+
+      fill_in 'Email', with: 'dwight@dundermifflin.test'
+      find_button 'Create account', disabled: true
+
+      fill_in 'Password', with: 'dwight@du' # 9 characters
+      find_button 'Create account', disabled: true
+
+      fill_in 'Password', with: 'dwight@dundermifflin.test'
+
+      click_on 'Create account'
+
+      assert_selector 'h1', text: 'Landing Page'
+      assert_link 'Sign out'
+      assert_no_link 'Sign in'
+    end
+  end
+
+  test 'email is memorized when changing to sign in' do
+    using_browser do
+      visit '/'
+      navigate_to_registration_form
+
+      within('.devise--form-component') do
+        fill_in 'Email', with: 'angela@dundermifflin.test'
+        click_on 'Sign in'
+      end
+
+      assert_field 'Email', with: 'angela@dundermifflin.test'
+    end
+  end
+
+  private
+
+  def navigate_to_registration_form
+    click_on 'Sign in'
+    click_on 'Register'
   end
 end
