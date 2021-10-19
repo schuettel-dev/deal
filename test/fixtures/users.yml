@@ -4,3 +4,9 @@ DEFAULTS: &DEFAULTS
 michael:
   <<: *DEFAULTS
   email: "michael@dundermifflin.test"
+  full_name: "Michael Scott"
+
+jim:
+  <<: *DEFAULTS
+  email: "jim@dundermifflin.test"
+  full_name: "Jim Halpert"

@@ -1,17 +1,37 @@
 ---
 en:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        full_name: Full name
+        password: Password
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              invalid: may only contain alphanumeric characters and hyphens
   landing_pages:
     show:
       title: Landing Page
+  settings:
+    profile:
+      show_component:
+        email_address_private: Won't be shown to anyone.
+      title: Profile
+      update:
+        success: Profile updated successfully.
   shared:
     actions:
+      cancel: Cancel
       dismiss: Dismiss
     devise:
       change_password: Change password
       create_account: Create account
       forgot_password: Forgot password
       minimum_password_length: The minimum password length is %{count} characters.
-      register: Register
       reset_password: Reset password
       sign_in: Sign in
       sign_out: Sign out
+      sign_up: Register

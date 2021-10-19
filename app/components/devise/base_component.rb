@@ -1,15 +1,26 @@
 class Devise::BaseComponent < ViewComponent::Base
-  attr_reader :resource, :resource_name, :main_app, :devise_mapping
+  attr_reader :resource
 
-  def initialize(devise_component_options)
+  def initialize(resource:)
     super()
-    @resource = devise_component_options[:resource]
-    @resource_name = devise_component_options[:resource_name]
-    @main_app = devise_component_options[:main_app]
-    @devise_mapping = devise_component_options[:devise_mapping]
+    @resource = resource
   end
 
   def minimum_password_length
     Devise.password_length.min
+  end
+
+  private
+
+  def devise_links_for(*keys)
+    devise_links.values_at(*keys)
+  end
+
+  def devise_links
+    {
+      sign_in: { name: t('shared.devise.sign_in'), href: new_user_session_path },
+      sign_up: { name: t('shared.devise.sign_up'), href: new_user_registration_path },
+      forgot_password: { name: t('shared.devise.forgot_password'), href: new_user_password_path }
+    }
   end
 end

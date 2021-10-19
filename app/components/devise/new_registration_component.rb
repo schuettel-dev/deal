@@ -1,7 +1,5 @@
 class Devise::NewRegistrationComponent < Devise::BaseComponent
   def links
-    [
-      { name: t('shared.devise.sign_in'), href: new_session_path(resource_name) }
-    ]
+    devise_links_for :sign_in
   end
 end

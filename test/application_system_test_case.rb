@@ -8,9 +8,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Capybara.using_driver(driver, &block)
   end
 
-  def sign_in_as(fixture_key, password = '1234567890')
+  def sign_in_as(fixture_key, password = '1234567890', locale: I18n.default_locale)
     user = users(fixture_key)
-    visit new_user_session_path
+    visit new_user_session_path(locale: locale)
     within 'form' do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: password

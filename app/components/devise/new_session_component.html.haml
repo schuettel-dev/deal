@@ -4,21 +4,30 @@
       = t('shared.devise.sign_in')
 
     = c.form do
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(resource, url: user_session_path) do |f|
         %div
           .field.my-6
-            = render Forms::FieldComponent.new(form: f, field: :email) do |c|
-              = f.email_field :email, autocomplete: "email", class: c.default_classes, 'data-devise--memorize-email-target': 'email', 'data-action': 'devise--memorize-email#memorize'
+            .my-1
+              = f.label :email
+            .my-1
+              = f.email_field :email, autocomplete: "email", class: 'form-input', 'data-devise--memorize-email-target': 'email', 'data-action': 'devise--memorize-email#memorize'
+            .my-1
+              = render Forms::FieldErrorsComponent.new(object: f.object, field: :email)
 
           .field.my-6
-            = render Forms::FieldComponent.new(form: f, field: :password) do |c|
-              = f.password_field :password, autocomplete: "current-password", class: c.default_classes
+            .my-1
+              = f.label :password
+            .my-1
+              = f.password_field :password, autocomplete: "current-password", class: 'form-input'
+            .my-1
+              = render Forms::FieldErrorsComponent.new(object: f.object, field: :password)
 
-          - if devise_mapping.rememberable?
-            .field.my-6
-              = render Forms::CheckBoxComponent.new(form: f, field: :remember_me)
+
+          .field.my-6
+            = f.check_box :remember_me, class: 'form-check-box'
+            = f.label :remember_me, nil, class: 'ml-2'
 
           .actions.mt-10.mb-4
-            = render Forms::SubmitComponent.new(form: f, text: t('shared.devise.sign_in'))
+            = f.submit t('shared.devise.sign_in'), class: 'form-submit'
 
     - c.links links

@@ -13,6 +13,6 @@
       = render Layout::MainNavigationComponent.new(user_signed_in: user_signed_in?)
     .main
       = render Layout::FlashesComponent.new(action_dispatch_flash: flash)
-      .container.mx-auto.py-10
+      .container.mx-auto.py-10.px-2
         = yield
     .footer

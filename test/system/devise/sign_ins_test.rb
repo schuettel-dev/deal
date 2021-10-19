@@ -7,7 +7,7 @@ class Devise::SignInsTest < ApplicationSystemTestCase
     click_on 'Sign in'
     sign_in_as(:michael)
     assert_selector '.flash-notice', text: 'Signed in successfully.'
-    assert_selector 'h1', text: 'Landing Page'
+    assert_selector 'h1', text: 'Profile'
     assert_link 'Sign out'
     assert_no_link 'Sign in'
   end

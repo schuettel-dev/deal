@@ -9,11 +9,12 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Create account'
 
     fill_in 'Email', with: 'dwight@dundermifflin.test'
+    fill_in 'Full name', with: 'Dwight Schrute'
     fill_in 'Password', with: 'dwight@dundermifflin.test'
 
     click_on 'Create account'
 
-    assert_selector 'h1', text: 'Landing Page'
+    assert_selector 'h1', text: 'Profile'
     assert_link 'Sign out'
     assert_no_link 'Sign in'
   end
@@ -27,8 +28,8 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
 
     click_on 'Create account'
 
-    assert_selector '.form--field-errors', text: "Email can't be blank"
-    assert_selector '.form--field-errors', text: 'Password is too short (minimum is 10 characters)'
+    assert_selector '.form-field-errors', text: "Email can't be blank"
+    assert_selector '.form-field-errors', text: 'Password is too short (minimum is 10 characters)'
   end
 
   test 'user registers with browser' do
@@ -41,6 +42,9 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
       fill_in 'Email', with: 'dwight@dundermifflin.test'
       find_button 'Create account', disabled: true
 
+      fill_in 'Full name', with: 'Dwight Schrute'
+      find_button 'Create account', disabled: true
+
       fill_in 'Password', with: 'dwight@du' # 9 characters
       find_button 'Create account', disabled: true
 
@@ -48,7 +52,7 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
 
       click_on 'Create account'
 
-      assert_selector 'h1', text: 'Landing Page'
+      assert_selector 'h1', text: 'Profile'
       assert_link 'Sign out'
       assert_no_link 'Sign in'
     end

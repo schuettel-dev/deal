@@ -7,7 +7,7 @@ class Forms::FieldErrorsComponentTest < ViewComponent::TestCase
 
     render_inline(create_component(object: user, field: :email))
 
-    assert_selector '.form--field-errors', text: "Email can't be blank"
+    assert_selector '.form-field-errors', text: "Email can't be blank"
   end
 
   test 'does not render without errors' do

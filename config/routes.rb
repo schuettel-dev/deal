@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'landing_pages#show'
+
+  scope '/:locale' do
+    devise_for :users
+    draw(:settings)
+  end
 end
