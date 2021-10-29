@@ -7,7 +7,7 @@ class Layout::HeadingWithIconComponent < ViewComponent::Base
     @icon = icon
   end
 
-  def inline_icon
-    Rails.root.join("app/assets/images/#{@icon}").read.html_safe # rubocop:disable Rails/OutputSafety
+  def icon
+    render Helpers::IconComponent.new(icon: @icon)
   end
 end
