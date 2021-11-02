@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :full_name, presence: true
   validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
 
+  def decorate
+    @decorate ||= UserDecorator.new(self)
+  end
+
   private
 
   def initialize_locale

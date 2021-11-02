@@ -19,7 +19,6 @@ de:
       title: Profil
       update:
         success: Profil gespeichert.
-    title: Einstellungen
   shared:
     actions:
       cancel: Abbrechen

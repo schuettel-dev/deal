@@ -3,7 +3,8 @@ require 'application_system_test_case'
 class Settings::ProfileTest < ApplicationSystemTestCase
   test 'changes profile' do
     sign_in_as(:michael)
-    click_on 'Settings'
+    within('.user-menu') { click_on 'Profile' }
+
     fill_in 'Full name', with: 'Prison Mike'
     select 'German', from: 'Language'
     click_on 'Update profile'

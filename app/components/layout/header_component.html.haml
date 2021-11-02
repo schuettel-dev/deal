@@ -10,16 +10,9 @@
         .w-full.flex
           %nav.mx-auto
             %ul
-              %li
-                = link_to settings_profile_path, class: 'py-1 px-3 text-gray-200 tracking-wider hover:text-purple-300 transition flex items-center' do
-                  .h-5.w-5.mr-2
-                    = render Helpers::IconComponent.new(icon: 'svgs/adjustments.svg')
-                  = t('settings.title')
 
       .w-full.flex.justify-end
         - if user_signed_in?
-          = link_to t('shared.devise.sign_out'), destroy_user_session_path, method: :delete, class: 'text-gray-600 hover:text-purple-300 transition'
+          = render Helpers::UserMenuComponent.new(current_user: current_user)
         - else
-          .flex.items-baseline.gap-x-6
-            .flex
-              = render Helpers::LanguagePickerComponent.new
+          = render Helpers::LanguagePickerComponent.new

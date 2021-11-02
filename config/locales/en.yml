@@ -19,7 +19,6 @@ en:
       title: Profile
       update:
         success: Profile updated successfully.
-    title: Settings
   shared:
     actions:
       cancel: Cancel

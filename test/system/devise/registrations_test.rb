@@ -73,8 +73,9 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
       click_on 'Create account'
 
       assert_selector 'h1', text: 'Profile'
+
+      find('.user-menu button').click
       assert_link 'Sign out'
-      assert_no_link 'Sign in'
     end
   end
 
