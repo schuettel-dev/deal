@@ -34,6 +34,11 @@ class Devise::SignInsTest < ApplicationSystemTestCase
     using_browser do
       visit '/'
       click_on 'Sign in'
+
+      change_language 'Deutsch'
+      assert_selector 'h1', text: 'Anmelden'
+      change_language 'English'
+
       within('.devise--form-component') do
         fill_in 'Email', with: 'oscar@dundermifflin.test'
         click_on 'Register'

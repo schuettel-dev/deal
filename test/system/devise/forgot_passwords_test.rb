@@ -45,6 +45,10 @@ class Devise::ForgotPasswordsTest < ApplicationSystemTestCase
     using_browser do
       navigate_to_forgot_password
 
+      change_language 'Deutsch'
+      assert_selector 'h1', text: 'Passwort vergessen'
+      change_language 'English'
+
       within('.devise--form-component') do
         fill_in 'Email', with: 'stanley@dundermifflin.test'
         click_on 'Sign in'

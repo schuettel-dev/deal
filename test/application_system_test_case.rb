@@ -18,4 +18,11 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       click_on 'Sign in'
     end
   end
+
+  def change_language(locale_name)
+    within('.language-picker') do
+      find('button').click
+      click_on locale_name
+    end
+  end
 end

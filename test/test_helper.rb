@@ -16,17 +16,6 @@ class ActiveSupport::TestCase
   end
 end
 
-class ActionDispatch::IntegrationTest
-  setup do
-    @default_url_options_locale_before = app.default_url_options[:locale]
-    app.default_url_options[:locale] = I18n.locale
-  end
-
-  teardown do
-    app.default_url_options[:locale] = @default_url_options_locale_before
-  end
-end
-
 class ViewComponent::TestCase
   def create_component(**args)
     self.class.name.sub(/Test$/, '').constantize.new(**args)

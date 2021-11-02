@@ -1,6 +1,6 @@
 = render Layout::HeadingWithIconComponent.new(title: t('settings.profile.title'), icon: "svgs/user.svg")
 
-= form_with(model: form, url: settings_profile_path) do |f|
+= form_with(model: form) do |f|
   .my-10.rounded-md.bg-white.min-h-100.shadow-lg
     .grid.grid-cols-1.divide-y.divide-gray-100
       .flex.flex-col.px-8.py-6
@@ -17,6 +17,11 @@
           - if f.object.errors.key?(:full_name)
             .form-field-errors.text-red-400.text-sm= f.object.errors.full_messages_for(:full_name).join(', ')
 
+      .flex.flex-col.px-8.py-6
+        .field
+          = f.label :locale, User.human_attribute_name(:locale), class: 'form-label'
+          = f.select :locale, I18nHelper.local_available_locales_options, {}, class: 'form-select my-1'
+
     .mt-4.flex.items-center.px-8.pb-6
-      = f.submit nil, class: 'text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer'
+      = f.submit t('settings.profile.actions.update_profile'), class: 'text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer'
       = link_to t('shared.actions.cancel'), url_for, class: 'ml-4 text-gray-400 hover:text-purple-500 transition'

@@ -13,7 +13,7 @@ class Devise::FormComponent < ViewComponent::Base
     end
 
     def call
-      link_to name, href, class: 'text-gray-400 hover:text-blue-500 transition text-xs'
+      link_to name, href, class: 'text-gray-400 hover:text-blue-500 transition text-xs inline-block mx-auto'
     end
   end
 end

@@ -1,0 +1,40 @@
+---
+de:
+  activerecord:
+    attributes:
+      user:
+        email: E-Mail
+        full_name: Vollständiger Name
+        locale: Sprache
+        password: Passwort
+  landing_pages:
+    show:
+      title: Startseite
+  settings:
+    profile:
+      actions:
+        update_profile: Profil speichern
+      show_component:
+        email_address_private: Wird nicht angezeigt.
+      title: Profil
+      update:
+        success: Profil gespeichert.
+    title: Einstellungen
+  shared:
+    actions:
+      cancel: Abbrechen
+      dismiss: Ausblenden
+    devise:
+      change_password: Passwort ändern
+      create_account: Konto erstellen
+      forgot_password: Passwort vergessen
+      minimum_password_length: Das Passwort muss mindestens %{count} Zeichen beinhalten.
+      reset_password: Passwort zurücksetzen
+      sign_in: Anmelden
+      sign_out: Abmelden
+      sign_up: Registrieren
+    locales:
+      de: Deutsch
+      en: Englisch
+    screen_readers:
+      open_options: Optionen öffnen

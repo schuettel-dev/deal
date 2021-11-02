@@ -3,8 +3,8 @@ class Layout::FlashesComponent < ViewComponent::Base
 
   THEMES = {
     notice: {
-      flash: 'bg-blue-100 text-gray-600',
-      button: 'text-blue-600 hover:text-gray-900 transition'
+      flash: 'bg-purple-100 text-gray-600',
+      button: 'text-purple-600 hover:text-gray-900 transition'
     },
     alert: {
       flash: 'bg-pink-100 text-gray-600',

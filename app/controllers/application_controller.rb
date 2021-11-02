@@ -4,12 +4,8 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
 
   def switch_locale(&action)
-    locale = current_user.try(:locale) || params[:locale] || I18n.default_locale
+    locale = current_user.try(:locale) || find_locale_in_session || I18n.default_locale
     I18n.with_locale(locale, &action)
-  end
-
-  def default_url_options
-    { locale: I18n.locale }
   end
 
   def after_sign_in_path_for(_resource)
@@ -19,6 +15,10 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[full_name locale])
+  end
+
+  def find_locale_in_session
+    session[:locale] = params[:locale] || session[:locale]
   end
 end

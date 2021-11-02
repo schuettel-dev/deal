@@ -15,8 +15,24 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
     click_on 'Create account'
 
     assert_selector 'h1', text: 'Profile'
+    assert_select 'Language', text: 'English'
     assert_link 'Sign out'
     assert_no_link 'Sign in'
+  end
+
+  test 'user registers in german' do
+    visit '/'
+    navigate_to_registration_form
+    within('.language-picker') do
+      click_on 'Deutsch'
+    end
+
+    fill_in 'E-Mail', with: 'dwight@dundermifflin.test'
+    fill_in 'Vollständiger Name', with: 'Dwight Schrute'
+    fill_in 'Passwort', with: 'dwight@dundermifflin.test'
+
+    click_on 'Konto erstellen'
+    assert_select 'Sprache', text: 'Deutsch'
   end
 
   test 'user enters invalid email and password' do
@@ -36,6 +52,10 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
     using_browser do
       visit '/'
       navigate_to_registration_form
+
+      change_language 'Deutsch'
+      assert_selector 'h1', text: 'Konto erstellen'
+      change_language 'English'
 
       find_button 'Create account', disabled: true
 

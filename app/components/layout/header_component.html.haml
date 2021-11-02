@@ -1,0 +1,25 @@
+.bg-gray-800
+  .mx-auto.container.px-2.py-8
+    .flex.gap-x-8.items-center.mx-1
+      .w-full
+        = link_to root_path do
+          .inline-flex.w-10.h-10.bg-gradient-to-br.from-pink-400.to-blue-500.rounded-full.p-2.items-center.border-2.border-white.justify-center.font-bold.text-white.text-sm.leading-3
+            DE AL
+
+      - if user_signed_in?
+        .w-full.flex
+          %nav.mx-auto
+            %ul
+              %li
+                = link_to settings_profile_path, class: 'py-1 px-3 text-gray-200 tracking-wider hover:text-purple-300 transition flex items-center' do
+                  .h-5.w-5.mr-2
+                    = render Helpers::IconComponent.new(icon: 'svgs/adjustments.svg')
+                  = t('settings.title')
+
+      .w-full.flex.justify-end
+        - if user_signed_in?
+          = link_to t('shared.devise.sign_out'), destroy_user_session_path, method: :delete, class: 'text-gray-600 hover:text-purple-300 transition'
+        - else
+          .flex.items-baseline.gap-x-6
+            .flex
+              = render Helpers::LanguagePickerComponent.new

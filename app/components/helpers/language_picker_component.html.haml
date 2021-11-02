@@ -1,0 +1,12 @@
+.language-picker{ 'data-controller': 'helpers--dropdown' }
+  .relative.inline-block.text-left
+    %div
+      %button#menu-button.text-gray-400.hover:text-purple-400.rounded-full.flex.items-center.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-offset-gray-800.focus:ring-purple-600{ 'aria-expanded': 'true', 'aria-haspopup': 'true', type: 'button', 'data-action': 'helpers--dropdown#toggle', 'data-helpers--dropdown-target': 'toggler' }
+        %span.sr-only= t('shared.screen_readers.open_options')
+        .h-6.w-6
+          = render Helpers::IconComponent.new(icon: 'svgs/globe.svg')
+
+    .origin-top-right.absolute.right-0.mt-2.w-64.rounded-md.shadow-lg.bg-white.ring-1.ring-black.ring-opacity-5.focus:outline-none.overflow-hidden{ 'aria-labelledby': 'menu-button', 'aria-orientation': 'vertical', role: 'menu', tabindex: '-1', 'data-helpers--dropdown-target': 'menu' }
+      .p-0{ role: 'none' }
+        .flex.flex-col.divide-y.divide-gray-200
+          = render Helpers::LanguagePickerLinkComponent.with_collection(I18nHelper.global_available_locales_options)

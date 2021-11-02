@@ -9,7 +9,7 @@ class Devise::NewSessionComponentTest < ViewComponent::TestCase
     assert_field 'Remember me'
     assert_button 'Sign in'
 
-    assert_link 'Register', href: '/en/users/sign_up'
-    assert_link 'Forgot password', href: '/en/users/password/new'
+    assert_link 'Register', href: '/users/sign_up'
+    assert_link 'Forgot password', href: '/users/password/new'
   end
 end

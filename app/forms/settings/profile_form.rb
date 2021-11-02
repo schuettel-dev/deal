@@ -20,6 +20,10 @@ class Settings::ProfileForm
     profile_params&.dig(:full_name) || @object.full_name
   end
 
+  def locale
+    profile_params&.dig(:locale) || @object.locale
+  end
+
   def model_name
     ActiveModel::Name.new(self, nil, 'Settings::Profile')
   end
@@ -27,6 +31,6 @@ class Settings::ProfileForm
   private
 
   def profile_params
-    @params[:profile]&.permit(:full_name)
+    @params[:settings_profile]&.permit(:full_name, :locale)
   end
 end

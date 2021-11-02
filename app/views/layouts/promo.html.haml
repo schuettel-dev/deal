@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title DEAL
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body
+    .header
+      HEADER
+      = link_to t('shared.devise.sign_in'), new_user_session_path
+    .main
+      MAIN
+    .footer
+      FOOTER

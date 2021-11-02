@@ -4,5 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_validation :initialize_locale, if: :new_record?
+
   validates :full_name, presence: true
+  validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
+
+  private
+
+  def initialize_locale
+    self.locale ||= I18n.locale
+  end
 end

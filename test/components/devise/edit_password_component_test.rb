@@ -6,7 +6,7 @@ class Devise::EditPasswordComponentTest < ViewComponent::TestCase
     render_inline(create_component(resource: user))
 
     assert_selector 'form' do |form|
-      assert_equal '/en/users/password', form[:action]
+      assert_equal '/users/password', form[:action]
     end
 
     assert_field 'Password'

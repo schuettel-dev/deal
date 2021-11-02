@@ -5,18 +5,15 @@ en:
       user:
         email: Email
         full_name: Full name
+        locale: Language
         password: Password
-    errors:
-      models:
-        user:
-          attributes:
-            nickname:
-              invalid: may only contain alphanumeric characters and hyphens
   landing_pages:
     show:
       title: Landing Page
   settings:
     profile:
+      actions:
+        update_profile: Update profile
       show_component:
         email_address_private: Won't be shown to anyone.
       title: Profile
@@ -36,3 +33,8 @@ en:
       sign_in: Sign in
       sign_out: Sign out
       sign_up: Register
+    locales:
+      de: German
+      en: English
+    screen_readers:
+      open_options: Open options
