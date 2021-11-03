@@ -1,27 +1,30 @@
 = render Layout::HeadingWithIconComponent.new(title: t('settings.profile.title'), icon: "svgs/user.svg")
 
-= form_with(model: form) do |f|
-  .my-10.rounded-md.bg-white.min-h-100.shadow-lg
-    .grid.grid-cols-1.divide-y.divide-gray-100
-      .flex.flex-col.px-8.py-6
-        .field
-          = f.label :email, User.human_attribute_name(:email), class: 'form-label'
-          = f.email_field :email, class: 'form-input my-1', disabled: true
-          .text-sm.text-gray-300
-            = t('.email_address_private')
+%div{ 'data-controller': 'forms--change-tracker' }
+  = form_with(model: form, html: { 'data-forms--change-tracker-target': 'form', autocomplete: :off }) do |f|
+    .my-10.rounded-md.bg-white.min-h-100.shadow-lg
+      .grid.grid-cols-1.divide-y.divide-gray-100
+        .flex.flex-col.px-8.py-6
+          .field
+            = f.label :email, User.human_attribute_name(:email), class: 'form-label'
+            = f.email_field :email, class: 'form-input my-1', disabled: true
+            .text-sm.text-gray-300
+              = t('.email_address_private')
 
-      .flex.flex-col.px-8.py-6
-        .field
-          = f.label :full_name, User.human_attribute_name(:full_name), class: 'form-label'
-          = f.text_field :full_name, class: 'form-input my-1'
-          - if f.object.errors.key?(:full_name)
-            .form-field-errors.text-red-400.text-sm= f.object.errors.full_messages_for(:full_name).join(', ')
+        .flex.flex-col.px-8.py-6
+          .field
+            = f.label :full_name, User.human_attribute_name(:full_name), class: 'form-label'
+            = f.text_field :full_name, class: 'form-input my-1', 'data-forms--change-tracker-target': 'tracked', 'data-action': 'forms--change-tracker#render'
+            - if f.object.errors.key?(:full_name)
+              .form-field-errors.text-red-400.text-sm= f.object.errors.full_messages_for(:full_name).join(', ')
 
-      .flex.flex-col.px-8.py-6
-        .field
-          = f.label :locale, User.human_attribute_name(:locale), class: 'form-label'
-          = f.select :locale, I18nHelper.local_available_locales_options, {}, class: 'form-select my-1'
+        .flex.flex-col.px-8.py-6
+          .field
+            = f.label :locale, User.human_attribute_name(:locale), class: 'form-label'
+            = f.select :locale, I18nHelper.local_available_locales_options, {}, class: 'form-select my-1', 'data-forms--change-tracker-target': 'tracked', 'data-action': 'forms--change-tracker#render'
 
-    .mt-4.flex.items-center.px-8.pb-6
-      = f.submit t('settings.profile.actions.update_profile'), class: 'text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer'
-      = link_to t('shared.actions.cancel'), url_for, class: 'ml-4 text-gray-400 hover:text-purple-500 transition'
+      .mt-4.flex.items-center.px-8.pb-6
+        = f.submit t('settings.profile.actions.update_profile'), class: 'text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer', 'data-forms--change-tracker-target': 'enableIfFormHasChanges'
+        %div{ 'data-forms--change-tracker-target': 'showIfFormHasChanges' }
+          %button.ml-4.text-gray-400.hover:text-purple-500.transition{ 'data-action': 'forms--change-tracker#reset', type: 'button' }
+            = t('shared.actions.cancel')

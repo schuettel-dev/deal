@@ -9,7 +9,7 @@ class Settings::Profile::ShowComponentTest < ViewComponent::TestCase
       assert_field 'Email', with: 'michael@dundermifflin.test', disabled: true
       assert_field 'Full name', with: 'Michael Scott'
       assert_button 'Update profile'
-      assert_link 'Cancel', href: '/settings/profile'
+      assert_button 'Cancel'
     end
   end
 
