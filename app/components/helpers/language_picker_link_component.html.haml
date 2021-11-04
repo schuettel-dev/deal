@@ -1,5 +1,0 @@
-= link_to url_for(locale: locale_key), class: 'p-4 text-gray-800 hover:text-purple-400 flex items-center gap-x-2' do
-  .w-5.h-5
-    - if current_locale?
-      = render Helpers::IconComponent.new(icon: 'svgs/check.svg')
-  = locale_name

@@ -6,7 +6,11 @@
         .h-6.w-6
           = render Helpers::IconComponent.new(icon: 'svgs/globe.svg')
 
-    .origin-top-right.absolute.right-0.mt-2.w-64.rounded-md.shadow-lg.bg-white.ring-1.ring-black.ring-opacity-5.focus:outline-none.overflow-hidden{ 'aria-labelledby': 'menu-button', 'aria-orientation': 'vertical', role: 'menu', tabindex: '-1', 'data-helpers--dropdown-target': 'menu' }
-      .p-0{ role: 'none' }
-        .flex.flex-col.divide-y.divide-gray-200
-          = render Helpers::LanguagePickerLinkComponent.with_collection(I18nHelper.global_available_locales_options)
+    .origin-top-right.absolute.right-0.mt-2.rounded-md.shadow-lg.bg-white.ring-1.ring-black.ring-opacity-5.focus:outline-none.overflow-hidden.divide-y.divide-gray-100{ 'aria-labelledby': 'menu-button', 'aria-orientation': 'vertical', role: 'menu', tabindex: '-1', 'data-helpers--dropdown-target': 'menu' }
+      - I18nHelper.global_available_locales_options.each do |locale_name, locale_key|
+        .py-1{ role: 'none' }
+          = link_to url_for(locale: locale_key), class: 'text-gray-800 hover:text-purple-400 flex items-center pl-6 pr-10 py-2' do
+            .w-5.h-5.mr-4
+              - if I18n.locale == locale_key
+                = render Helpers::IconComponent.new(icon: 'svgs/check.svg')
+            = locale_name

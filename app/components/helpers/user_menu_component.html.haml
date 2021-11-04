@@ -7,15 +7,17 @@
           %span.leading-none
             = current_user.decorate.initials
 
-    .origin-top-right.absolute.right-0.mt-2.rounded-md.shadow-lg.bg-white.ring-1.ring-black.ring-opacity-5.focus:outline-none.overflow-hidden{ 'aria-labelledby': 'menu-button', 'aria-orientation': 'vertical', role: 'menu', tabindex: '-1', 'data-helpers--dropdown-target': 'menu' }
-      .p-0{ role: 'none' }
-        .flex.flex-col.divide-y.divide-gray-200
-          = link_to settings_profile_path, class: 'pl-3 pr-12 py-4 text-gray-700 hover:text-purple-600 flex items-center gap-x-4' do
-            .h-6.w-6.p-1
-              = render Helpers::IconComponent.new(icon: 'svgs/user.svg')
+    .origin-top-right.absolute.right-0.mt-2.rounded-md.shadow-lg.bg-white.ring-1.ring-black.ring-opacity-5.focus:outline-none.overflow-hidden.divide-y.divide-gray-100{ 'aria-labelledby': 'menu-button', 'aria-orientation': 'vertical', role: 'menu', tabindex: '-1', 'data-helpers--dropdown-target': 'menu' }
+      .py-1{ role: 'none' }
+        = link_to settings_profile_path, class: 'text-gray-700 hover:text-purple-600 transition group flex items-center pl-6 pr-10 py-2' do
+          .h-5.w-5.mr-4
+            = render Helpers::IconComponent.new(icon: 'svgs/user.svg')
+          .whitespace-nowrap
             = t('settings.profile.title')
 
-          = link_to destroy_user_session_path, method: :delete, class: 'pl-3 pr-12 py-4 text-gray-400 hover:text-purple-600 flex items-center gap-x-4 transition' do
-            .h-6.w-6.p-1
-              = render Helpers::IconComponent.new(icon: 'svgs/logout.svg')
+      .py-1{ role: 'none' }
+        = link_to destroy_user_session_path, method: :delete, class: 'text-gray-400 hover:text-purple-600 transition group flex items-center pl-6 pr-10 py-2' do
+          .h-5.w-5.mr-4
+            = render Helpers::IconComponent.new(icon: 'svgs/logout.svg')
+          .whitespace-nowrap
             = t('shared.devise.sign_out')

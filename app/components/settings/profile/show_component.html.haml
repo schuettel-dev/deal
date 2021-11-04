@@ -24,7 +24,7 @@
             = f.select :locale, I18nHelper.local_available_locales_options, {}, class: 'form-select my-1', 'data-forms--change-tracker-target': 'tracked', 'data-action': 'forms--change-tracker#render'
 
       .mt-4.flex.items-center.px-8.pb-6
-        = f.submit t('settings.profile.actions.update_profile'), class: 'text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer', 'data-forms--change-tracker-target': 'enableIfFormHasChanges'
+        = f.submit t('settings.profile.actions.update_profile'), class: 'text-sm text-gray-100 bg-purple-500 hover:bg-purple-400 transition py-2 px-5 rounded cursor-pointer', 'data-forms--change-tracker-target': 'enableIfFormHasChanges'
         %div{ 'data-forms--change-tracker-target': 'showIfFormHasChanges' }
-          %button.ml-4.text-gray-400.hover:text-purple-500.transition{ 'data-action': 'forms--change-tracker#reset', type: 'button' }
+          %button.ml-4.text-sm.text-gray-400.hover:text-purple-500.transition{ 'data-action': 'forms--change-tracker#reset', type: 'button' }
             = t('shared.actions.cancel')

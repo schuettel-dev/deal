@@ -74,8 +74,10 @@ class Devise::RegistrationsTest < ApplicationSystemTestCase
 
       assert_selector 'h1', text: 'Profile'
 
-      find('.user-menu button').click
-      assert_link 'Sign out'
+      within('.user-menu') do
+        find('button').click
+        assert_link 'Sign out'
+      end
     end
   end
 
